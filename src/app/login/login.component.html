@@ -1,0 +1,25 @@
+<div class="col-md-10">
+    <h3 style="margin-bottom:50px">Identification</h3>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" class="form-control"  [(ngModel)]="input.username" name="username" #username="ngModel" required />
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" [(ngModel)]="input.password" name="password"  #password="ngModel" required />
+        </div>
+
+        <div *ngIf="(f.submitted && f.form.invalid) || badCredential" class="alert alert-danger">
+            <div *ngIf="f.submitted && f.form.invalid" >
+                <div *ngIf="username.invalid">Nom d'utilisateur invalide.</div>
+                <div *ngIf="password.invalid">Mot de passe invalide.</div>
+            </div>
+            <div *ngIf="badCredential" >Mauvais utilisateur ou mot de passe.</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Connection</button>
+            <i *ngIf="loading" class="fa fa-spinner fa-spin" style="font-size:24px;color:blue"></i>
+        </div>
+    </form>
+</div>

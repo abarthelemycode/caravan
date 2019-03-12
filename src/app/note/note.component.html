@@ -1,0 +1,8 @@
+<div class="well form-group"  (keyup.enter)="edit()"  >
+    <button (click)="delete()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <input type="text" (blur)="edit()" class="form-control input title" maxlength="50" [(ngModel)]="note.title" />
+    <input type="text" (blur)="edit()" class="form-control input" maxlength="50" [(ngModel)]="note.comment" />
+</div>
+
+
+
